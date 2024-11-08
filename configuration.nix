@@ -21,11 +21,11 @@
 
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 10 * 1024;
+    size = 40 * 1024;
   }];
 
   networking = {
-    hostName = "pc117";
+    hostName = "Vitaly-Dell";
     networkmanager.enable = true;
     firewall.enable = true;
   };
@@ -65,7 +65,7 @@
 
   users.users.user = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   fileSystems = {
@@ -73,4 +73,18 @@
     "/".options = [ "noatime" ];
   };
   services.fstrim.enable = true;
+
+  systemd.services.pritunl = {
+    description = "pritunl";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "/home/user/.nix-profile/bin/pritunl-client-service";
+      User = "root";
+      Group = "root";
+    };
+  };
+
+  security.pki.certificateFiles = [ /etc/nixos/smarkets.crt ];
+
+  virtualisation.docker.enable = true;
 }

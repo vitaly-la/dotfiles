@@ -1,5 +1,7 @@
 { lib, pkgs, ... }:
 {
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "slack" "pritunl-client" ];
+
   home = {
     stateVersion = "24.05";
 
@@ -56,7 +58,11 @@
       moreutils
       comma
 
+      pritunl-client
+      slack
       telegram-desktop
+
+      postgresql
     ];
   };
 
@@ -93,8 +99,8 @@
 
     git = {
       enable = true;
-      userName = "vitaly-la";
-      userEmail = "148568747+vitaly-la@users.noreply.github.com";
+      userName = "Vitalii Ladunov";
+      userEmail = "vitalii.ladunov@smarkets.com";
       aliases = {
         co = "checkout";
         br = "branch";
@@ -107,6 +113,12 @@
     };
 
     firefox.enable = true;
+
+    vscode = {
+      enable = true;
+      package = pkgs.vscodium;
+      extensions = with pkgs.vscode-extensions; [ vscodevim.vim ];
+    };
 
     vim = {
       enable = true;
