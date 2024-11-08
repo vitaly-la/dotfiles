@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   system.stateVersion = "24.05";
 
@@ -13,9 +13,11 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
+        useOSProber = true;
       };
     };
-    blacklistedKernelModules = [ "uvcvideo" ];
+    blacklistedKernelModules = [ "uvcvideo" "rtw88_8821ce" ];
+    extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];
     kernel.sysctl."kernel.sysrq" = 1;
   };
 

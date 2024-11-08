@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
   home = {
     stateVersion = "24.05";
@@ -21,6 +21,7 @@
       ".config/mpv/mpv.conf".text = ''
         ao=pulse
         mute=yes
+        window-maximized=yes
       '';
     };
 
