@@ -87,4 +87,6 @@
   security.pki.certificateFiles = [ /etc/nixos/smarkets.crt ];
 
   virtualisation.docker.enable = true;
+
+  powerManagement.cpuFreqGovernor = "performance";
 }
