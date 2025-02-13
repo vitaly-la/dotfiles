@@ -14,6 +14,7 @@
         device = "nodev";
         efiSupport = true;
       };
+      timeout = 1;
     };
     blacklistedKernelModules = [ "uvcvideo" ];
     kernel.sysctl."kernel.sysrq" = 1;
@@ -87,6 +88,4 @@
   security.pki.certificateFiles = [ /etc/nixos/smarkets.crt ];
 
   virtualisation.docker.enable = true;
-
-  powerManagement.cpuFreqGovernor = "performance";
 }

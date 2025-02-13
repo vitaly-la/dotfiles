@@ -64,6 +64,10 @@
 
       postgresql
     ];
+
+    sessionVariables = {
+      EDITOR = "vim";
+    };
   };
 
   programs = {
