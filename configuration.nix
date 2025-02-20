@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   imports = [ /etc/nixos/hardware-configuration.nix ];
 
@@ -15,6 +15,7 @@
         efiSupport = true;
         useOSProber = true;
       };
+      timeout = 1;
     };
     blacklistedKernelModules = [ "uvcvideo" "rtw88_8821ce" ];
     extraModulePackages = [ config.boot.kernelPackages.rtl8821ce ];

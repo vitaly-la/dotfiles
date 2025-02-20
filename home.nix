@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home = {
-    stateVersion = "24.05";
+    stateVersion = "24.11";
 
     username = "user";
     homeDirectory = "/home/user";
@@ -59,6 +59,10 @@
 
       telegram-desktop
     ];
+
+    sessionVariables = {
+      EDITOR = "vim";
+    };
   };
 
   programs = {
@@ -108,6 +112,14 @@
     };
 
     firefox.enable = true;
+
+    vscode = {
+      enable = true;
+      package = pkgs.vscodium;
+      extensions = with pkgs.vscode-extensions; [
+        vscodevim.vim
+      ];
+    };
 
     vim = {
       enable = true;
