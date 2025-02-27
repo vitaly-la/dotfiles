@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "slack" "pritunl-client" "pycharm-community" ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "slack" "pritunl-client" "pycharm-community" "cursor" ];
 
   home = {
     stateVersion = "24.05";
@@ -62,6 +62,8 @@
       slack
       telegram-desktop
       jetbrains.pycharm-community
+      k9s
+      code-cursor
 
       postgresql
     ];
