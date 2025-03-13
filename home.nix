@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cursor" ];
+
   home = {
     stateVersion = "24.11";
 
@@ -56,6 +58,8 @@
       dnsutils
       moreutils
       comma
+
+      code-cursor
 
       telegram-desktop
     ];
