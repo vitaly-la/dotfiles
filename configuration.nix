@@ -4,7 +4,15 @@
 
   imports = [ /etc/nixos/hardware-configuration.nix ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    sandbox = "relaxed";
+    require-sigs = false;
+    substituters = [
+      "s3://smarkets-artefact-cache?region=eu-west-1&profile=smk-nix-s3-cache"
+      "https://cache.nixos.org"
+    ];
+    experimental-features = [ "nix-command" "flakes" ];
+  };
 
   boot = {
     loader = {

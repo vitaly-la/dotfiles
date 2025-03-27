@@ -48,24 +48,32 @@
     };
 
     packages = with pkgs; [
+      # utils
+      comma
+      dnsutils
+      moreutils
+      ripgrep
       wget
       htop
       file # for fzf-vim
-      mpv
-      monaspace
-      ripgrep
-      dnsutils
-      moreutils
-      comma
 
-      pritunl-client
-      slack
+      # apps
+      mpv
       telegram-desktop
+
+      # fonts
+      monaspace
+
+      # code editors
       jetbrains.pycharm-community
-      k9s
       code-cursor
 
-      postgresql
+      # work
+      pritunl-client
+      slack
+
+      # work env
+      k9s
     ];
 
     sessionVariables = {
