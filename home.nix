@@ -1,6 +1,11 @@
 { lib, pkgs, ... }:
+let
+  unstable = import <unstable> {
+    config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "cursor" ];
+  };
+in
 {
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "slack" "pritunl-client" "pycharm-community" "cursor" ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [ "slack" "pritunl-client" "pycharm-community" ];
 
   home = {
     stateVersion = "24.05";
@@ -66,7 +71,7 @@
 
       # code editors
       jetbrains.pycharm-community
-      code-cursor
+      unstable.code-cursor
 
       # work
       pritunl-client

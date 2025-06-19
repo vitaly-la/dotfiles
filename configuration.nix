@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   system.stateVersion = "24.05";
 
@@ -74,7 +74,7 @@
 
   users.users.user = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
 
   fileSystems = {
@@ -96,4 +96,15 @@
   security.pki.certificateFiles = [ /etc/nixos/smarkets.crt ];
 
   virtualisation.docker.enable = true;
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+  environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 }
