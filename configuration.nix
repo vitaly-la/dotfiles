@@ -74,7 +74,7 @@
 
   users.users.user = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
   };
 
   fileSystems = {
@@ -104,7 +104,4 @@
     ];
   };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
-
-  virtualisation.libvirtd.enable = true;
-  programs.virt-manager.enable = true;
 }
