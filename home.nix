@@ -137,7 +137,7 @@ in
     vscode = {
       enable = true;
       package = pkgs.vscodium;
-      extensions = with pkgs.vscode-extensions; [ vscodevim.vim ];
+      profiles.default.extensions = with pkgs.vscode-extensions; [ vscodevim.vim ];
     };
 
     vim = {
