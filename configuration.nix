@@ -104,4 +104,14 @@
     ];
   };
   environment.sessionVariables = { LIBVA_DRIVER_NAME = "iHD"; };
+
+  services.redshift = {
+    enable = true;
+    temperature = {
+      day = 5700;
+      night = 3500;
+    };
+    latitude = "51.5072";
+    longitude = "-0.1276";
+  };
 }
