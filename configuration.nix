@@ -74,7 +74,7 @@
 
   users.users.user = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
   };
 
   fileSystems = {
@@ -114,4 +114,7 @@
     latitude = "51.5072";
     longitude = "-0.1276";
   };
+
+  programs.virt-manager.enable = true;
+  virtualisation.libvirtd.enable = true;
 }
